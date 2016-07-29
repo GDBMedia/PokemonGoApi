@@ -1,0 +1,28 @@
+{
+  "name": "yes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pmgWebApi.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GDBMedia/PokemonGoApi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GDBMedia/PokemonGoApi/issues"
+  },
+  "homepage": "https://github.com/GDBMedia/PokemonGoApi#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "express": "^4.14.0",
+    "python-shell": "^0.4.0",
+    "request": "^2.74.0"
+  }
+}
