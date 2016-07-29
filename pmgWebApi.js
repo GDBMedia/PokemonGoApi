@@ -158,6 +158,8 @@ var arrayOfPoke = [];
         pokemon_data.base_defense = pokedata.pokemon[pokemon_data.pokemon_id].BaseDefense;
         pokemon_data.type1 = pokedata.pokemon[pokemon_data.pokemon_id].Type1;
         pokemon_data.type2 = pokedata.pokemon[pokemon_data.pokemon_id].Type2;
+        pokemon_data.next_evo_cp = [];
+        pokemon_data.next_evo_name = [];
 
           if(pokemon_data.next_evo != 0){
             var nextEvo = pokedata.pokemon[pokemon_data.next_evo];
@@ -178,20 +180,24 @@ var arrayOfPoke = [];
             var ecpm = cpm + acpm;
 
             if(pokemon_data.pokemon_id == 133){
-              pokemon_data.next_eevo_cp = [];
-              pokemon_data.next_eevo_name = [];
+
               pokemon_data.next_evo.forEach(function(eevoid){
                 var eevo = pokedata.pokemon[eevoid];
-                pokemon_data.next_eevo_cp.push((eevo.BaseAttack + pokemon_data.individual_attack) * Math.pow((eevo.BaseDefense + pokemon_data.individual_defense),0.5) * Math.pow((eevo.BaseStamina + pokemon_data.individual_stamina),0.5) * Math.pow(ecpm,2) /10);
-                pokemon_data.next_eevo_name.push(eevo.Name);
+                pokemon_data.next_evo_cp.push((eevo.BaseAttack + pokemon_data.individual_attack) * Math.pow((eevo.BaseDefense + pokemon_data.individual_defense),0.5) * Math.pow((eevo.BaseStamina + pokemon_data.individual_stamina),0.5) * Math.pow(ecpm,2) /10);
+                pokemon_data.next_evo_name.push(eevo.Name);
               });
             }else{
-            pokemon_data.next_evo_cp = (nextEvo.BaseAttack + pokemon_data.individual_attack) * Math.pow((nextEvo.BaseDefense + pokemon_data.individual_defense),0.5) * Math.pow((nextEvo.BaseStamina + pokemon_data.individual_stamina),0.5) * Math.pow(ecpm,2) /10
-            pokemon_data.next_evo_name = nextEvo.Name;
+              pokemon_data.next_evo_cp.push((nextEvo.BaseAttack + pokemon_data.individual_attack) * Math.pow((nextEvo.BaseDefense + pokemon_data.individual_defense),0.5) * Math.pow((nextEvo.BaseStamina + pokemon_data.individual_stamina),0.5) * Math.pow(ecpm,2) /10);
+              pokemon_data.next_evo_name.push(nextEvo.Name);
+            if(pokedata.pokemon[pokemon_data.next_evo].next_evo != 0){
+              var nextNextEvo = pokedata.pokemon[nextEvo.next_evo];
+              pokemon_data.next_evo_cp.push((nextNextEvo.BaseAttack + pokemon_data.individual_attack) * Math.pow((nextNextEvo.BaseDefense + pokemon_data.individual_defense),0.5) * Math.pow((nextNextEvo.BaseStamina + pokemon_data.individual_stamina),0.5) * Math.pow(ecpm,2) /10);
+              pokemon_data.next_evo_name.push(nextNextEvo.Name);
+            }
           }
         }else{
-          pokemon_data.next_evo_cp = -1;
-          pokemon_data.next_evo_name = "N/A";
+          pokemon_data.next_evo_cp.push(0);
+          pokemon_data.next_evo_name.push("N/A");
         }
         arrayOfPoke.push(pokemon_data);
       }
