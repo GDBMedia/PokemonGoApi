@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-    "node": "5.9.1"
+    "node": "6.2.0",
+    "npm": "3.8.9"
   },
   "repository": {
     "type": "git",
