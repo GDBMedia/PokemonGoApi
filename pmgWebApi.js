@@ -4,6 +4,9 @@ var pokedata = require('./pokedata');
 var colors = require('colors');
 
 var app = express();
+app.get('/', function(req, res){
+  res.send("THANKS FOR VISITING");
+})
 
 app.get('/getpokemon/', function (req, res) {
  res.setHeader('Content-Type', 'application/json');
@@ -61,9 +64,9 @@ app.get('/getuserinfo/', function (req, res) {
                 }
               });
 });
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+// app.listen(3000, function () {
+//   console.log('Example app listening on port 3000!');
+// });
 
 function loopResponseUser(responses, responsesUser) {
   var userdata = {
