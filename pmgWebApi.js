@@ -4,7 +4,10 @@ var pokedata = require('./pokedata');
 var colors = require('colors');
 
 var app = express();
+app.set('view engine', 'ejs');
+var port = process.env.PORT || 8080;
 app.use(express.static(__dirname + "/public"));
+
 app.get('/', function(req, res){
   res.send("THANKS FOR VISITING");
 })
@@ -65,8 +68,8 @@ app.get('/getuserinfo/', function (req, res) {
                 }
               });
 });
-app.listen(5000, function () {
-  console.log('Example app listening on port 5000!');
+app.listen(port, function () {
+  console.log('Example app listening on port ' + port);
 });
 
 function loopResponseUser(responses, responsesUser) {
