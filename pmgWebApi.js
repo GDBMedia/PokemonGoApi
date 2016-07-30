@@ -12,7 +12,7 @@ app.get('/', function(req, res){
   res.send("THANKS FOR VISITING");
 })
 
-app.post('/getpokemon/', function (req, res) {
+app.get('/getpokemon/', function (req, res) {
  res.setHeader('Content-Type', 'application/json');
  console.log("");
  console.log("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\".blue);
@@ -40,7 +40,7 @@ app.post('/getpokemon/', function (req, res) {
               });
 });
 
-app.post('/getuserinfo/', function (req, res) {
+app.get('/getuserinfo/', function (req, res) {
   console.log("");
   console.log("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\".magenta);
   console.log("getuserinfo request Started".magenta);
