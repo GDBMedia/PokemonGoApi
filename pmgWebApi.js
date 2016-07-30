@@ -180,7 +180,6 @@ var arrayOfPoke = [];
             var ecpm = cpm + acpm;
 
             if(pokemon_data.pokemon_id == 133){
-
               pokemon_data.next_evo.forEach(function(eevoid){
                 var eevo = pokedata.pokemon[eevoid];
                 pokemon_data.next_evo_cp.push((eevo.BaseAttack + pokemon_data.individual_attack) * Math.pow((eevo.BaseDefense + pokemon_data.individual_defense),0.5) * Math.pow((eevo.BaseStamina + pokemon_data.individual_stamina),0.5) * Math.pow(ecpm,2) /10);

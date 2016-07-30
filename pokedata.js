@@ -16,7 +16,7 @@ exports.pokemon=[
       "Type2":"Poison",
       "BaseCaptureRate":0.16,
       "BaseFleeRate":0.1,
-      "CollisionRadiusM":0.38,
+      "CollisionRadiusM":0.54,
       "CollisionHeightM":0.65,
       "CollisionHeadRadiusM":0.27,
       "MovementTimerS":10,
