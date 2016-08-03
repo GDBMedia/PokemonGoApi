@@ -209,9 +209,6 @@ var arrayOfPoke = [];
       }
     }
   });
-  // arrayOfPoke.sort(function(a, b) {
-  //   return parseInt(b.individual_defense + b.individual_attack + b.individual_stamina) - parseInt(a.individual_defense + a.individual_attack + a.individual_stamina);
-  // });
   console.log("RETURNING POKEMON".blue.bold.underline);
   console.log("//////////////////////////////////////".blue);
   console.log("");
