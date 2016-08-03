@@ -141,7 +141,7 @@ function loopResponseUser(responses, responsesUser) {
   });
   userdata.egg_count = egg_count;
   userdata.pokemon_count = pokemon_count;
-  console.log("returning Userdata".magenta.bold.underline);
+  console.log("RETURNING USERDATA".magenta.bold.underline);
   console.log("//////////////////////////////////////".magenta);
   console.log("");
   return userdata;
@@ -212,7 +212,7 @@ var arrayOfPoke = [];
   // arrayOfPoke.sort(function(a, b) {
   //   return parseInt(b.individual_defense + b.individual_attack + b.individual_stamina) - parseInt(a.individual_defense + a.individual_attack + a.individual_stamina);
   // });
-  console.log("returning Pokemon".blue.bold.underline);
+  console.log("RETURNING POKEMON".blue.bold.underline);
   console.log("//////////////////////////////////////".blue);
   console.log("");
   return arrayOfPoke;
