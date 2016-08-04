@@ -1,1 +1,1 @@
-web: node pmgWebApi.js
+web: node server.js

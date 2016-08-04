@@ -6,6 +6,8 @@ var colors = require('colors');
 var app = express();
 app.set('view engine', 'ejs');
 var port = process.env.PORT || 8080;
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
 app.use(express.static(__dirname + "/public"));
 
 app.get('/', function(req, res){
@@ -44,7 +46,7 @@ app.get('/getuserinfo/', function (req, res) {
   console.log("");
   console.log("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\".magenta);
   console.log("getuserinfo request Started".magenta);
-  // res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Content-Type', 'application/json');
   var username = req.query.u;
   var password = req.query.p;
   var location = req.query.l;
@@ -52,25 +54,28 @@ app.get('/getuserinfo/', function (req, res) {
     mode: 'text',
     args: ['-a', 'google', '-u', username, '-p' , password, '-l' , location]
   };
-  // var responses;
+  var responses;
   PythonShell.run('pokecli.py',options, function(err, results){}).on('message', function(message) {
-                res.send(message);
-                // if(JSON.parse(message).error){
-                //     res.send(message);
-                //     console.log("error".red);
-                //     console.log("//////////////////////////////////////".red);
-                //     console.log("");
-                // }else{
-                //
-                //   res.send(JSON.parse(message));
-                //   responsesItems = JSON.parse(message).responses.GET_INVENTORY.inventory_delta.inventory_items;
-                //   responsesUser = JSON.parse(message).responses.GET_PLAYER.player_data;
-                //   res.send(loopResponseUser(responsesItems, responsesUser));
-                // }
+                if(JSON.parse(message).error){
+                    res.send(message);
+                    console.log("error".red);
+                    console.log("//////////////////////////////////////".red);
+                    console.log("");
+                }else{
+
+                  //res.send(JSON.parse(message));
+                  responsesItems = JSON.parse(message).responses.GET_INVENTORY.inventory_delta.inventory_items;
+                  responsesUser = JSON.parse(message).responses.GET_PLAYER.player_data;
+                  res.send(loopResponseUser(responsesItems, responsesUser));
+                }
               });
 });
-app.listen(port, function () {
-  console.log('Example app listening on port ' + port);
+// app.listen(port, function () {
+//   console.log('Example app listening on port ' + port);
+// });
+
+app.listen(server_port, server_ip_address, function () {
+  console.log( "Listening on " + server_ip_address + ", server_port " + server_port )
 });
 
 function loopResponseUser(responses, responsesUser) {

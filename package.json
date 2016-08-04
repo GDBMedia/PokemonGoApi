@@ -16,6 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/GDBMedia/PokemonGoApi.git"
   },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js",
   "author": "",
   "license": "ISC",
   "bugs": {
