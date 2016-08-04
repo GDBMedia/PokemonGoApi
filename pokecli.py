@@ -126,7 +126,7 @@ def main():
     #print('Response dictionary (get_player): \n\r{}'.format(pprint.PrettyPrinter(indent=4).pformat(response_dict)))
 
     # sleep due to server-side throttling
-    #time.sleep(0.2)
+    time.sleep(0.2)
 
     # get player profile + inventory call (thread-safe/chaining example)
     # ----------------------
