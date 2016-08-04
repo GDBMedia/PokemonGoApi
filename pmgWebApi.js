@@ -44,7 +44,7 @@ app.get('/getuserinfo/', function (req, res) {
   console.log("");
   console.log("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\".magenta);
   console.log("getuserinfo request Started".magenta);
-  res.setHeader('Content-Type', 'application/json');
+  // res.setHeader('Content-Type', 'application/json');
   var username = req.query.u;
   var password = req.query.p;
   var location = req.query.l;
@@ -52,20 +52,21 @@ app.get('/getuserinfo/', function (req, res) {
     mode: 'text',
     args: ['-a', 'google', '-u', username, '-p' , password, '-l' , location]
   };
-  var responses;
+  // var responses;
   PythonShell.run('pokecli.py',options, function(err, results){}).on('message', function(message) {
-                if(JSON.parse(message).error){
-                    res.send(message);
-                    console.log("error".red);
-                    console.log("//////////////////////////////////////".red);
-                    console.log("");
-                }else{
-
-                  res.send(JSON.parse(message));
-                  responsesItems = JSON.parse(message).responses.GET_INVENTORY.inventory_delta.inventory_items;
-                  responsesUser = JSON.parse(message).responses.GET_PLAYER.player_data;
-                  res.send(loopResponseUser(responsesItems, responsesUser));
-                }
+                res.send(message);
+                // if(JSON.parse(message).error){
+                //     res.send(message);
+                //     console.log("error".red);
+                //     console.log("//////////////////////////////////////".red);
+                //     console.log("");
+                // }else{
+                //
+                //   res.send(JSON.parse(message));
+                //   responsesItems = JSON.parse(message).responses.GET_INVENTORY.inventory_delta.inventory_items;
+                //   responsesUser = JSON.parse(message).responses.GET_PLAYER.player_data;
+                //   res.send(loopResponseUser(responsesItems, responsesUser));
+                // }
               });
 });
 app.listen(port, function () {
