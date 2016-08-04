@@ -70,13 +70,25 @@ app.get('/getuserinfo/', function (req, res) {
                 }
               });
 });
-// app.listen(port, function () {
-//   console.log('Example app listening on port ' + port);
-// });
-
-app.listen(server_port, server_ip_address, function () {
-  console.log( "Listening on " + server_ip_address + ", server_port " + server_port )
+app.get('/test/', function(req, res){
+  var username = req.query.u;
+  var password = req.query.p;
+  var location = req.query.l;
+  var options = {
+    mode: 'text',
+    args: ['-a', 'google', '-u', username, '-p' , password, '-l' , location]
+  };
+  PythonShell.run('test.py',options, function(err, results){}).on('message', function(message) {
+                res.send(message);
+              });
 });
+app.listen(port, function () {
+  console.log('Example app listening on port ' + port);
+});
+
+// app.listen(server_port, server_ip_address, function () {
+//   console.log( "Listening on " + server_ip_address + ", server_port " + server_port )
+// });
 
 function loopResponseUser(responses, responsesUser) {
   var userdata = {
