@@ -82,6 +82,8 @@ def init_config():
 
 
 def main():
+
+    print('{"status": "we made it"}')
     # log settings
     # log format
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s [%(module)10s] [%(levelname)5s] %(message)s')
