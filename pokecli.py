@@ -120,11 +120,13 @@ def main():
     # set player position on the earth
     api.set_position(*position)
 
-    print('{"status": "we made it"}')
+
 
     if not api.login(config.auth_service, config.username, config.password, app_simulation = True):
         print('{"error": true}')
         return
+
+    print('{"status": "we made it"}')
 
     # get player profile call (single command example)
     # ----------------------
