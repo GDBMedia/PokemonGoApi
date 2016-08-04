@@ -96,11 +96,11 @@ class PGoApi:
             self._position_lat = lat
             self._position_lng = lng
             self._position_alt = alt
-        return True
+
 
         if not isinstance(username, six.string_types) or not isinstance(password, six.string_types):
             raise AuthException("Username/password not correctly specified")
-
+        return True
         if provider == 'ptc':
             self._auth_provider = AuthPtc()
         elif provider == 'google':
