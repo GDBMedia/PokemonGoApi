@@ -61,7 +61,7 @@ app.get('/getuserinfo/', function (req, res) {
                     console.log("");
                 }else{
 
-                  // res.send(JSON.parse(message));
+                  res.send(JSON.parse(message));
                   responsesItems = JSON.parse(message).responses.GET_INVENTORY.inventory_delta.inventory_items;
                   responsesUser = JSON.parse(message).responses.GET_PLAYER.player_data;
                   res.send(loopResponseUser(responsesItems, responsesUser));
