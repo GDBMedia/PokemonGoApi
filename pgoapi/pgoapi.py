@@ -100,11 +100,12 @@ class PGoApi:
 
         if not isinstance(username, six.string_types) or not isinstance(password, six.string_types):
             raise AuthException("Username/password not correctly specified")
-        return True
+
         if provider == 'ptc':
             self._auth_provider = AuthPtc()
         elif provider == 'google':
             self._auth_provider = AuthGoogle()
+        return True
         else:
             raise AuthException("Invalid authentication provider - only ptc/google available.")
 

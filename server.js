@@ -71,6 +71,7 @@ app.get('/getuserinfo/', function (req, res) {
               });
 });
 app.get('/test/', function(req, res){
+  res.setHeader('Content-Type', 'application/json');
   var username = req.query.u;
   var password = req.query.p;
   var location = req.query.l;
@@ -79,7 +80,7 @@ app.get('/test/', function(req, res){
     args: ['-a', 'google', '-u', username, '-p' , password, '-l' , location]
   };
   PythonShell.run('pokecli.py',options, function(err, results){}).on('message', function(message) {
-                res.send(message);
+                res.send(JSON.parse(message));
               });
 });
 app.listen(port, function () {
