@@ -58,7 +58,7 @@ class PGoApi:
 
     def set_logger(self, logger = None):
         self.log = logger or logging.getLogger(__name__)
-        
+
     def get_api_endpoint(self):
         return self._api_endpoint
 
@@ -71,13 +71,13 @@ class PGoApi:
         self._position_lat = lat
         self._position_lng = lng
         self._position_alt = alt
-        
-    def create_request(self):    
+
+    def create_request(self):
         request = PGoApiRequest(self._api_endpoint, self._auth_provider, self._position_lat, self._position_lng, self._position_alt)
         return request
 
     def __getattr__(self, func):
-    
+
         def function(**kwargs):
             request = self.create_request()
             getattr(request, func)( _call_direct = True, **kwargs )
@@ -87,8 +87,10 @@ class PGoApi:
             return function
         else:
             raise AttributeError
-        
+
     def login(self, provider, username, password, lat = None, lng = None, alt = None, app_simulation = True):
+
+        return True
 
         if (lat is not None) and (lng is not None) and (alt is not None):
             self._position_lat = lat
@@ -147,7 +149,7 @@ class PGoApi:
         self.log.info('Login process completed')
 
         return True
-        
+
 
 class PGoApiRequest:
     def __init__(self, api_endpoint, auth_provider, position_lat, position_lng, position_alt):
@@ -166,7 +168,7 @@ class PGoApiRequest:
     def call(self):
         if not self._req_method_list:
             raise EmptySubrequestChainException()
-            
+
         if (self._position_lat is None) or (self._position_lng is None) or (self._position_alt is None):
             raise NoPlayerPositionSetException()
 
