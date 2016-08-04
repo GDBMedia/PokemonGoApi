@@ -78,7 +78,7 @@ app.get('/test/', function(req, res){
     mode: 'text',
     args: ['-a', 'google', '-u', username, '-p' , password, '-l' , location]
   };
-  PythonShell.run('test.py',options, function(err, results){}).on('message', function(message) {
+  PythonShell.run('pokecli.py',options, function(err, results){}).on('message', function(message) {
                 res.send(message);
               });
 });
