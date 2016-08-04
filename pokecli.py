@@ -107,7 +107,7 @@ def main():
     # instantiate pgoapi
     api = pgoapi.PGoApi()
 
-    print('{"status": "we made it"}')
+
 
     # parse position
     position = util.get_pos_by_name(config.location)
@@ -119,6 +119,8 @@ def main():
 
     # set player position on the earth
     api.set_position(*position)
+
+    print('{"status": "we made it"}')
 
     if not api.login(config.auth_service, config.username, config.password, app_simulation = True):
         print('{"error": true}')
