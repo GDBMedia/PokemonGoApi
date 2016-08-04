@@ -83,7 +83,7 @@ def init_config():
 
 def main():
 
-    print('{"status": "we made it"}')
+
     # log settings
     # log format
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s [%(module)10s] [%(levelname)5s] %(message)s')
@@ -106,6 +106,8 @@ def main():
 
     # instantiate pgoapi
     api = pgoapi.PGoApi()
+
+    print('{"status": "we made it"}')
 
     # parse position
     position = util.get_pos_by_name(config.location)
