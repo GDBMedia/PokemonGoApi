@@ -105,7 +105,6 @@ class PGoApi:
             self._auth_provider = AuthPtc()
         elif provider == 'google':
             self._auth_provider = AuthGoogle()
-        return True
         else:
             raise AuthException("Invalid authentication provider - only ptc/google available.")
 

@@ -126,7 +126,6 @@ def main():
         print('{"error": true}')
         return
 
-    print('{"status": "we made it"}')
 
     # get player profile call (single command example)
     # ----------------------
